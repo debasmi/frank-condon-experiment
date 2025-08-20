@@ -5,16 +5,8 @@ from scipy.integrate import quad
 import math
 
 class FranckCondonCalculator:
-    """
-    Calculate Franck-Condon intensities for diatomic molecules
-    Based on harmonic oscillator approximation
-    """
     
     def __init__(self, molecule_data):
-        """
-        Initialize with molecule parameters
-        molecule_data: dict containing Re_g, Re_e, k_g, k_e, mu
-        """
         self.Re_g = molecule_data['Re_g']  # Ground state equilibrium distance (Å)
         self.Re_e = molecule_data['Re_e']  # Excited state equilibrium distance (Å)
         self.k_g = molecule_data['k_g']    # Ground state force constant (eV/Å²)
@@ -138,6 +130,18 @@ class FranckCondonCalculator:
         plt.plot(R, V_g, 'b-', linewidth=2, label='Ground State')
         plt.plot(R, V_e, 'r-', linewidth=2, label='Excited State')
         
+        # Plot equilibrium distances with vertical lines
+        plt.axvline(x=self.Re_g, color='blue', linestyle='-', linewidth=2, alpha=0.8, 
+                   label=f'Re(ground) = {self.Re_g} Å')
+        plt.axvline(x=self.Re_e, color='red', linestyle='-', linewidth=2, alpha=0.8,
+                   label=f'Re(excited) = {self.Re_e} Å')
+        
+        # Add text annotations for Re values
+        plt.text(self.Re_g + 0.05, 6, f'Re(g) = {self.Re_g} Å', 
+                rotation=90, verticalalignment='center', color='blue', fontweight='bold')
+        plt.text(self.Re_e + 0.05, 6, f'Re(e) = {self.Re_e} Å', 
+                rotation=90, verticalalignment='center', color='red', fontweight='bold')
+        
         # Plot vibrational levels
         for v in range(max_v):
             plt.axhline(y=E_vib_g[v], color='blue', linestyle='--', alpha=0.6)
@@ -147,8 +151,8 @@ class FranckCondonCalculator:
         
         plt.xlabel('Internuclear Distance R (Å)')
         plt.ylabel('Potential Energy (eV)')
-        plt.title('HCl Potential Energy Curves with Vibrational Levels')
-        plt.legend()
+        plt.title('HCl Potential Energy Curves with Vibrational Levels\nand Equilibrium Distances')
+        plt.legend(loc='upper right')
         plt.grid(True, alpha=0.3)
         plt.xlim(0.8, 2.5)
         plt.ylim(0, 8)
@@ -235,3 +239,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
