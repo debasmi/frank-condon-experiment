@@ -1,3 +1,4 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import factorial
@@ -5,8 +6,16 @@ from scipy.integrate import quad
 import math
 
 class FranckCondonCalculator:
+    """
+    Calculate Franck-Condon intensities for diatomic molecules
+    Based on harmonic oscillator approximation
+    """
     
     def __init__(self, molecule_data):
+        """
+        Initialize with molecule parameters
+        molecule_data: dict containing Re_g, Re_e, k_g, k_e, mu
+        """
         self.Re_g = molecule_data['Re_g']  # Ground state equilibrium distance (Å)
         self.Re_e = molecule_data['Re_e']  # Excited state equilibrium distance (Å)
         self.k_g = molecule_data['k_g']    # Ground state force constant (eV/Å²)
@@ -203,13 +212,35 @@ def main():
     """Main function to run the Franck-Condon analysis"""
     
     # HCl molecular data from the images
-    hcl_data = {
+    '''hcl_data = {
         'Re_g': 1.274,      # Ground state equilibrium distance (Å)
         'Re_e': 1.55,       # Excited state equilibrium distance (Å)
         'k_g': 5.1,         # Ground state force constant (eV/Å²)
         'k_e': 4.2,         # Excited state force constant (eV/Å²)
         'mu': 1.626e-27     # Reduced mass of HCl (kg)
+    }'''
+    '''hcl_data = {
+        'Re_g': 1.274,      # Ground state equilibrium distance (Å)
+        'Re_e': 1.274,       # Excited state equilibrium distance (Å)
+        'k_g': 5.1,         # Ground state force constant (eV/Å²)
+        'k_e': 4.2,         # Excited state force constant (eV/Å²)
+        'mu': 1.626e-27     # Reduced mass of HCl (kg)
+    }'''
+    '''hcl_data = {
+        'Re_g': 1.274,      # Ground state equilibrium distance (Å)
+        'Re_e': 1,       # Excited state equilibrium distance (Å)
+        'k_g': 5.1,         # Ground state force constant (eV/Å²)
+        'k_e': 4.2,         # Excited state force constant (eV/Å²)
+        'mu': 1.626e-27     # Reduced mass of HCl (kg)
+    }'''
+    hcl_data = {
+        'Re_g': 1.274,      # Ground state equilibrium distance (Å)
+        'Re_e': 2,       # Excited state equilibrium distance (Å)
+        'k_g': 5.1,         # Ground state force constant (eV/Å²)
+        'k_e': 4.2,         # Excited state force constant (eV/Å²)
+        'mu': 1.626e-27     # Reduced mass of HCl (kg)
     }
+    
     
     print("Franck-Condon Analysis for HCl")
     print("=" * 40)
