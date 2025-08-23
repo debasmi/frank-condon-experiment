@@ -211,9 +211,16 @@ def main():
     """Main function to run the Franck-Condon analysis"""
     
     # HCl molecular data from the images
-    hf_data = {
+    '''hf_data = {
         'Re_g': 0.917,      # Ground state equilibrium distance (Å)
         'Re_e': 1.15,       # Excited state equilibrium distance (Å)
+        'k_g': 9.7,         # Ground state force constant (eV/Å²)
+        'k_e': 8.2,         # Excited state force constant (eV/Å²)
+        'mu': 1.59e-27     # Reduced mass of HCl (kg)
+    }'''
+    hf_data = {
+        'Re_g': 1.274,      # Ground state equilibrium distance (Å)
+        'Re_e': 1.274,       # Excited state equilibrium distance (Å)
         'k_g': 9.7,         # Ground state force constant (eV/Å²)
         'k_e': 8.2,         # Excited state force constant (eV/Å²)
         'mu': 1.59e-27     # Reduced mass of HCl (kg)
